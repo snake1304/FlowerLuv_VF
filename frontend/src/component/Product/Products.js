@@ -10,18 +10,6 @@ import { Slider } from "@mui/material";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 
-// const categories = [
-//   "Birthdays",
-//   "Anniversary",
-//   "Congratulations",
-//   "Best wishes",
-//   "Christmas",
-//   "Romance",
-//   "Anniversary",
-//   "6375cf646556c1363f7e3ae1",
-//   "6375d3f903bbeea0ac0171af",
-// ];
-
 const Products = ({ match }) => {
   const dispatch = useDispatch();
 

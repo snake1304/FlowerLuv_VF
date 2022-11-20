@@ -11,6 +11,9 @@ import {
   DELETE_CATE_FAIL,
   DELETE_CATE_REQUEST,
   DELETE_CATE_SUCCESS,
+  SINGLE_CATE_FAIL,
+  SINGLE_CATE_REQUEST,
+  SINGLE_CATE_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/categoryConstants";
 import axios from "axios";
@@ -24,6 +27,25 @@ export const getAllCategories = () => async (dispatch) => {
     dispatch({ type: ALL_CATE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: ALL_CATE_FAIL, payload: error.response.data.message });
+  }
+};
+
+// Get Products Details
+export const getSingleCategory = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: SINGLE_CATE_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/category/${id}`);
+
+    dispatch({
+      type: SINGLE_CATE_SUCCESS,
+      payload: data.category.categoryName,
+    });
+  } catch (error) {
+    dispatch({
+      type: SINGLE_CATE_FAIL,
+      payload: error.response.data.message,
+    });
   }
 };
 

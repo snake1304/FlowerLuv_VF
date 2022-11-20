@@ -29,6 +29,7 @@ import {
   allCategoryReducer,
   newCategoryReducer,
   categoryReducer,
+  singleCategoryReducer,
 } from "./reducers/categoryReducer";
 
 const reducer = combineReducers({
@@ -53,6 +54,7 @@ const reducer = combineReducers({
   categories: allCategoryReducer,
   newCategory: newCategoryReducer,
   category: categoryReducer,
+  singleCategory: singleCategoryReducer,
 });
 
 let initialState = {

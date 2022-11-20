@@ -22,7 +22,14 @@ exports.getAllCategories = catchAsyncErrors(async (req, res, next) => {
     categories,
   });
 });
-
+//Get single category
+exports.getSingleCategory = catchAsyncErrors(async (req, res, next) => {
+  const category = await Category.findById(req.params.id);
+  if (!category) {
+    return next(new ErrorHander("Category not found", 404));
+  }
+  res.status(200).json({ success: true, category });
+});
 //Update cate
 exports.updateCategory = catchAsyncErrors(async (req, res, next) => {
   const newCategoryData = {

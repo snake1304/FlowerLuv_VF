@@ -98,20 +98,6 @@ const Categories = ({ history }) => {
               {id ? "Update" : "Create"}
             </Button>
           </form>
-
-          {/* {categories && categories.length > 0 ? (
-            categories.map((item) => (
-              <li
-                className="category-link"
-                key={item}
-                onClick={() => handleEditCategory(item)}
-              >
-                {item.categoryName}
-              </li>
-            ))
-          ) : (
-            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
-          )} */}
           <table className="tableCategories">
             <tr>
               <td>Category name</td>

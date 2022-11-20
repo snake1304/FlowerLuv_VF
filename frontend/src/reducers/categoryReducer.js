@@ -14,6 +14,9 @@ import {
   DELETE_CATE_REQUEST,
   DELETE_CATE_RESET,
   DELETE_CATE_SUCCESS,
+  SINGLE_CATE_FAIL,
+  SINGLE_CATE_REQUEST,
+  SINGLE_CATE_SUCCESS,
   CLEAR_ERRORS,
 } from "../constants/categoryConstants";
 
@@ -118,6 +121,34 @@ export const categoryReducer = (state = {}, action) => {
         ...state,
         isUpdated: false,
       };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const singleCategoryReducer = (state = { category: {} }, action) => {
+  switch (action.type) {
+    case SINGLE_CATE_REQUEST:
+      return {
+        loading: true,
+        ...state,
+      };
+    case SINGLE_CATE_SUCCESS:
+      return {
+        loading: false,
+        category: action.payload,
+      };
+    case SINGLE_CATE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+
     case CLEAR_ERRORS:
       return {
         ...state,
