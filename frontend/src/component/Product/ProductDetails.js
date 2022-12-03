@@ -11,7 +11,6 @@ import MetaData from "../layout/MetaData";
 import { newReview } from "../../actions/productAction";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import { addItemsToCart } from "../../actions/cartAction";
-import { getSingleCategory } from "../../actions/categoryAction";
 import {
   Dialog,
   DialogActions,
@@ -24,7 +23,6 @@ const ProductDetails = ({ match }) => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-  const { category } = useSelector((state) => state.singleCategory);
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
@@ -70,7 +68,7 @@ const ProductDetails = ({ match }) => {
 
     setOpen(false);
   };
-  const categoryId = product.category;
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -86,7 +84,6 @@ const ProductDetails = ({ match }) => {
       window.location.reload();
     }
     dispatch(getProductDetails(match.params.id));
-    dispatch(getSingleCategory(categoryId));
   }, [dispatch, match.params.id, error, alert, reviewError, success]);
 
   return (
@@ -121,9 +118,6 @@ const ProductDetails = ({ match }) => {
                 <span className="detailsBlock-2-span">
                   ({product.numOfReviews} Reviews)
                 </span>
-              </div>
-              <div className="detailsBlock-1">
-                <p>Category: {category}</p>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`$${product.price}`}</h1>
